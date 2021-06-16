@@ -13,15 +13,12 @@ const Modal = ({ onCloseModal }) => {
     }
 
     const [title, date, startTime, endTime, description] = fieldEl;
-    const [a, b, c] = date.split('-').map(el => +el);
-    const [r, t] = startTime.split(':').map(el => +el);
-    const [y, z] = endTime.split(':').map(el => +el);
 
     createEvent({
       title,
       description,
-      dateFrom: new Date(a, b, c, r, t),
-      dateTo: new Date(a, b, c, y, z),
+      dateFrom: new Date(`${date} ${startTime}`),
+      dateTo: new Date(`${date} ${endTime}`),
     });
     onCloseModal();
   }

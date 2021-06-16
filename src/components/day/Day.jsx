@@ -4,7 +4,6 @@ import Hour from "../hour/Hour";
 import "./day.scss";
 
 const Day = ({ dataDay, dayEvents }) => {
-  console.log('dayEvents', dayEvents);
   const hours = Array(24)
     .fill()
     .map((val, index) => index);

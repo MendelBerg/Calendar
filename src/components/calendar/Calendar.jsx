@@ -12,7 +12,13 @@ const Calendar = ({ weekDates }) => {
 
   useEffect(() => {
     fetchEvents().then(response => {
-      setEvents(response);
+      setEvents(
+        response.map(el => ({
+          ...el,
+          dateFrom: new Date(el.dateFrom),
+          dateTo: new Date(el.dateTo),
+        })),
+      );
     });
   }, []);
 
