@@ -1,14 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import Navigation from './../navigation/Navigation';
 import Week from '../week/Week';
 import Sidebar from '../sidebar/Sidebar';
-import gatewayEvents from '../../gateway/events';
+import { fetchEvents } from '../../gateway/events.js';
 
 import './calendar.scss';
 
 const Calendar = ({ weekDates }) => {
-  const [events, setEvents] = useState(gatewayEvents);
+  const [events, setEvents] = useState([]);
+
+  useEffect(() => {
+    fetchEvents().then(response => {
+      setEvents(response);
+    });
+  }, []);
 
   return (
     <section className="calendar">
