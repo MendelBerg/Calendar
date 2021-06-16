@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Header from './components/header/Header.jsx';
 import Calendar from './components/calendar/Calendar.jsx';
 import Modal from './components/modal/Modal.jsx';
+import Events from './components/gateway/gateway.jsx';
 
 import { getWeekStartDate, generateWeekRange } from '../src/utils/dateUtils.js';
 
@@ -33,8 +34,14 @@ const App = () => {
 
   return (
     <>
+      {/* <Events /> */}
       {!isVisibleModal ? null : <Modal onCloseModal={hideModal} />}
-      <Header weekDates={weekDates} onSwitchWeek={switchWeek} onReturnToday={returnToday} onCreateEvent={showModal}/>
+      <Header
+        weekDates={weekDates}
+        onSwitchWeek={switchWeek}
+        onReturnToday={returnToday}
+        onCreateEvent={showModal}
+      />
       <Calendar weekDates={weekDates} />
     </>
   );
