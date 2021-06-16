@@ -15,11 +15,15 @@ const App = () => {
     setWeekStartDate(dateCopy);
   }
 
+  function returnToday() {
+    setWeekStartDate(new Date());
+  }
+
   const weekDates = generateWeekRange(getWeekStartDate(weekStartDate));
 
   return (
     <>
-      <Header weekDates={weekDates} onSwitchWeek={switchWeek} />
+      <Header weekDates={weekDates} onSwitchWeek={switchWeek} onReturnToday={returnToday} />
       <Calendar weekDates={weekDates} />
     </>
   );
