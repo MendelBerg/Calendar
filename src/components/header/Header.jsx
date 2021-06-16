@@ -4,12 +4,12 @@ import { months } from '../../utils/dateUtils.js';
 
 import './header.scss';
 
-const Header = ({ weekDates, onSwitchWeek, onReturnToday }) => {
+const Header = ({ weekDates, onSwitchWeek, onReturnToday, onCreateEvent }) => {
   const [month, nextMonth] = [...new Set(weekDates.map(day => day.getMonth()))];
 
   return (
     <header className="header">
-      <button className="button create-event-btn">
+      <button className="button create-event-btn" onClick={onCreateEvent}>
         <i className="fas fa-plus create-event-btn__icon"></i>Create
       </button>
       <div className="navigation">
