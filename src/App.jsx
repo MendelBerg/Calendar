@@ -17,7 +17,7 @@ class App extends Component {
 
     return (
       <>
-        <Header />
+        <Header weekDates={weekDates} />
         <Calendar weekDates={weekDates} />
       </>
     );

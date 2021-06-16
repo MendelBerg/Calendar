@@ -1,10 +1,12 @@
-import React from "react";
+import React from 'react';
 
-import { months } from "../../utils/dateUtils.js";
+import { months } from '../../utils/dateUtils.js';
 
-import "./header.scss";
+import './header.scss';
 
-const Header = () => {
+const Header = ({ weekDates }) => {
+  const [month, nextMonth] = [...new Set(weekDates.map(day => day.getMonth()))];
+
   return (
     <header className="header">
       <button className="button create-event-btn">
@@ -18,7 +20,9 @@ const Header = () => {
         <button className="icon-button navigation__nav-icon">
           <i className="fas fa-chevron-right"></i>
         </button>
-        <span className="navigation__displayed-month"></span>
+        <span className="navigation__displayed-month">{
+          !nextMonth ? months[month] : `${months[month]} - ${months[nextMonth]}`
+        }</span>
       </div>
     </header>
   );
