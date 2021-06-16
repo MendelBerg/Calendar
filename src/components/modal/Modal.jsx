@@ -1,8 +1,30 @@
 import React from 'react';
+import events from '../../gateway/events';
 
 import './modal.scss';
 
 const Modal = ({ onCloseModal }) => {
+  function createEvent(event) {
+    event.preventDefault();
+    const fieldEl = [...document.querySelectorAll('.event-form__field')].map(el => el.value);
+
+    if (fieldEl.includes('')) {
+      return null;
+    }
+
+    const [title, date, startTime, endTime, description] = fieldEl;
+
+    events.push({
+      id: events.length + 1,
+      title,
+      description,
+      dateFrom: new Date(`${date} ${startTime}`),
+      dateTo: new Date(`${date} ${endTime}`),
+    });
+
+    onCloseModal();
+  }
+
   return (
     <div className="modal overlay">
       <div className="modal__content">
@@ -28,7 +50,7 @@ const Modal = ({ onCloseModal }) => {
               placeholder="Description"
               className="event-form__field"
             ></textarea>
-            <button type="submit" className="event-form__submit-btn">
+            <button type="submit" className="event-form__submit-btn" onClick={createEvent}>
               Create
             </button>
           </form>
