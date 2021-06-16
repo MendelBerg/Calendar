@@ -1,11 +1,12 @@
 import React from 'react';
 import СlassNames from 'classnames';
+import moment from 'moment';
 
 import { days } from '../../utils/dateUtils.js';
 import './navigation.scss';
 
 const Navigation = ({ weekDates }) => {
-  const currentDate = new Date().getDate();
+  const currentDate = moment(new Date()).format('M D Y');
 
   return (
     <header className="calendar__header">
@@ -13,7 +14,7 @@ const Navigation = ({ weekDates }) => {
         <div
           key={index}
           className={СlassNames('calendar__day-label day-label', {
-            'day-label_current': currentDate === dayDate.getDate(),
+            'day-label_current': currentDate === moment(dayDate).format('M D Y'),
           })}
         >
           <span className="day-label__day-name">{days[dayDate.getDay()]}</span>

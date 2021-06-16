@@ -4,7 +4,7 @@ import { months } from '../../utils/dateUtils.js';
 
 import './header.scss';
 
-const Header = ({ weekDates }) => {
+const Header = ({ weekDates, onSwitchWeek }) => {
   const [month, nextMonth] = [...new Set(weekDates.map(day => day.getMonth()))];
 
   return (
@@ -14,10 +14,10 @@ const Header = ({ weekDates }) => {
       </button>
       <div className="navigation">
         <button className="navigation__today-btn button">Today</button>
-        <button className="icon-button navigation__nav-icon">
+        <button className="icon-button navigation__nav-icon" onClick={() => onSwitchWeek(false)}>
           <i className="fas fa-chevron-left"></i>
         </button>
-        <button className="icon-button navigation__nav-icon">
+        <button className="icon-button navigation__nav-icon" onClick={() => onSwitchWeek()}>
           <i className="fas fa-chevron-right"></i>
         </button>
         <span className="navigation__displayed-month">{

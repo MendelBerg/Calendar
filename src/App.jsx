@@ -1,27 +1,28 @@
-import React, { Component } from "react";
-import Header from "./components/header/Header.jsx";
-import Calendar from "./components/calendar/Calendar.jsx";
+import React, { useState } from 'react';
+import Header from './components/header/Header.jsx';
+import Calendar from './components/calendar/Calendar.jsx';
 
-import { getWeekStartDate, generateWeekRange } from "../src/utils/dateUtils.js";
+import { getWeekStartDate, generateWeekRange } from '../src/utils/dateUtils.js';
 
-import "./common.scss";
+import './common.scss';
 
-class App extends Component {
-  state = {
-    weekStartDate: new Date(),
-  };
+const App = () => {
+  const [weekStartDate, setWeekStartDate] = useState(new Date());
 
-  render() {
-    const { weekStartDate } = this.state;
-    const weekDates = generateWeekRange(getWeekStartDate(weekStartDate));
-
-    return (
-      <>
-        <Header weekDates={weekDates} />
-        <Calendar weekDates={weekDates} />
-      </>
-    );
+  function switchWeek(nextWeek = true) {
+    const dateCopy = new Date(weekStartDate);
+    dateCopy.setDate(dateCopy.getDate() + (nextWeek ? 7 : -7));
+    setWeekStartDate(dateCopy);
   }
-}
+
+  const weekDates = generateWeekRange(getWeekStartDate(weekStartDate));
+
+  return (
+    <>
+      <Header weekDates={weekDates} onSwitchWeek={switchWeek} />
+      <Calendar weekDates={weekDates} />
+    </>
+  );
+};
 
 export default App;
