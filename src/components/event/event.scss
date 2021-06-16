@@ -13,11 +13,19 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     margin-bottom: 8px;
+    font-size: 14px;
+  }
+
+  &__time {
+    font-size: 10px;
   }
 
   &:hover {
-    font-weight: bold;
+    .event__title {
+      font-weight: bold;
+    }
     background-color: red;
+    cursor: pointer;
   }
 }
 
