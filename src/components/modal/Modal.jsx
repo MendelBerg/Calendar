@@ -4,12 +4,9 @@ import { createEvent } from '../../gateway/events.js';
 import './modal.scss';
 
 const Modal = ({ onCloseModal }) => {
-  function getInputEvent(event) {
+  function onCreateEvent(event) {
     event.preventDefault();
-    const fieldEl = [...document.querySelectorAll('.event-form__field')].map(el => el.value);
-
     const [title, date, startTime, endTime, description] = fieldEl;
-
     createEvent({
       title,
       description,
@@ -21,12 +18,14 @@ const Modal = ({ onCloseModal }) => {
 
   const checkFormValidaion = () => {
     const fieldEl = [...document.querySelectorAll('.event-form__field')].map(el => el.value);
-    const submitBtn = document.querySelector('.event-form__submit-btn');
-
-    if (!fieldEl.includes('')) {
-      submitBtn.removeAttribute('disabled');
-      submitBtn.classList.add('event-form__submit-btn_enabled');
+    console.log('fieldEl', fieldEl);
+    if (fieldEl.includes('')) {
+      return null;
     }
+
+    const submitBtn = document.querySelector('.event-form__submit-btn');
+    submitBtn.removeAttribute('disabled');
+    submitBtn.classList.add('event-form__submit-btn_enabled');
   };
 
   return (
@@ -75,7 +74,7 @@ const Modal = ({ onCloseModal }) => {
               disabled
               type="submit"
               className="event-form__submit-btn"
-              onClick={getInputEvent}
+              onClick={onCreateEvent}
             >
               Create
             </button>
