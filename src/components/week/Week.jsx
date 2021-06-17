@@ -2,6 +2,7 @@ import React from 'react';
 import Day from '../day/Day';
 
 import './week.scss';
+import { days } from '../../utils/dateUtils.js';
 
 const Week = ({ weekDates, events }) => {
   return (
@@ -13,7 +14,14 @@ const Week = ({ weekDates, events }) => {
           event => event.dateFrom > dayStart && event.dateTo < dayEnd,
         );
 
-        return <Day key={dayStart.getDate()} dataDay={dayStart.getDate()} dayEvents={dayEvents} />;
+        return (
+          <Day
+            key={dayStart.getDate()}
+            weekDay={days[dayStart.getDay()]}
+            dataDay={dayStart.getDate()}
+            dayEvents={dayEvents}
+          />
+        );
       })}
     </div>
   );
