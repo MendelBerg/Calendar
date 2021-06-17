@@ -33,8 +33,9 @@
   cursor: pointer;
   border: none;
   position: absolute;
-  bottom: -40px;
-  left: 70%;
+  left: 40%;
+  z-index: 2;
+  top: 100%;
 
   width: 175px;
   height: 50px;
@@ -42,7 +43,7 @@
   border-radius: 5px;
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
 
-  &_left{
+  &_left {
     left: -90%;
   }
 }
