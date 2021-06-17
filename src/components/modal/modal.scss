@@ -58,4 +58,9 @@
     padding: 8px 16px;
     border-radius: 8px;
   }
+
+  &__submit-btn_enabled {
+    background-color: blue;
+    cursor: pointer;
+  }
 }

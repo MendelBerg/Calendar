@@ -8,6 +8,7 @@ const Modal = ({ onCloseModal }) => {
     event.preventDefault();
     const fieldEl = [...document.querySelectorAll('.event-form__field')].map(el => el.value);
 
+    console.log('hahaha');
     if (fieldEl.includes('')) {
       return null;
     }
@@ -22,6 +23,17 @@ const Modal = ({ onCloseModal }) => {
     });
     onCloseModal();
   }
+
+  const checkFormValidaion = () => {
+    const fieldEl = [...document.querySelectorAll('.event-form__field')].map(el => el.value);
+    const submitBtn = document.querySelector('.event-form__submit-btn');
+
+    if (!fieldEl.includes('')) {
+      submitBtn.removeAttribute('disabled');
+      submitBtn.classList.add('event-form__submit-btn_enabled');
+    }
+  };
+
   return (
     <div className="modal overlay">
       <div className="modal__content">
@@ -30,24 +42,46 @@ const Modal = ({ onCloseModal }) => {
             +
           </button>
           <form className="event-form">
-            <input type="text" name="title" placeholder="Title" className="event-form__field" />
+            <input
+              onInput={checkFormValidaion}
+              type="text"
+              name="title"
+              placeholder="Title"
+              className="event-form__field"
+            />
             <div className="event-form__time">
-              <input type="date" name="date" className="event-form__field" />
               <input
+                onInput={checkFormValidaion}
+                type="date"
+                name="date"
+                className="event-form__field"
+              />
+              <input
+                onInput={checkFormValidaion}
                 type="time"
                 name="startTime"
                 className="event-form__field"
-                // onChange={this.handleChange}
               />
               <span>-</span>
-              <input type="time" name="endTime" className="event-form__field" />
+              <input
+                onInput={checkFormValidaion}
+                type="time"
+                name="endTime"
+                className="event-form__field"
+              />
             </div>
             <textarea
+              onInput={checkFormValidaion}
               name="description"
               placeholder="Description"
               className="event-form__field"
             ></textarea>
-            <button type="submit" className="event-form__submit-btn" onClick={getInputEvent}>
+            <button
+              disabled
+              type="submit"
+              className="event-form__submit-btn"
+              onClick={getInputEvent}
+            >
               Create
             </button>
           </form>
