@@ -5,8 +5,7 @@ import moment from 'moment';
 import { days } from '../../utils/dateUtils.js';
 import './navigation.scss';
 
-const Navigation = ({ weekDates }) => {
-  const currentDate = moment(new Date()).format('M D Y');
+const Navigation = ({ currentDate, weekDates }) => {
 
   return (
     <header className="calendar__header">

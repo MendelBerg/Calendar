@@ -1,10 +1,11 @@
 import React from 'react';
 import Day from '../day/Day';
+import moment from 'moment';
 
 import './week.scss';
 import { days } from '../../utils/dateUtils.js';
 
-const Week = ({ weekDates, events }) => {
+const Week = ({ currentDate, weekDates, events }) => {
   return (
     <div className="calendar__week">
       {weekDates.map(dayStart => {
@@ -17,6 +18,7 @@ const Week = ({ weekDates, events }) => {
         return (
           <Day
             key={dayStart.getDate()}
+            isCurrentDay={currentDate === moment(dayStart).format('M D Y')}
             weekDay={days[dayStart.getDay()]}
             dataDay={dayStart.getDate()}
             dayEvents={dayEvents}

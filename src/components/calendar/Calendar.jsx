@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import moment from 'moment';
 
 import Navigation from './../navigation/Navigation';
 import Week from '../week/Week';
@@ -9,6 +10,7 @@ import './calendar.scss';
 
 const Calendar = ({ weekDates }) => {
   const [events, setEvents] = useState([]);
+  const currentDate = moment(new Date()).format('M D Y');
 
   useEffect(() => {
     fetchEvents().then(response => {
@@ -24,11 +26,11 @@ const Calendar = ({ weekDates }) => {
 
   return (
     <section className="calendar">
-      <Navigation weekDates={weekDates} />
+      <Navigation currentDate={currentDate} weekDates={weekDates} />
       <div className="calendar__body">
         <div className="calendar__week-container">
           <Sidebar />
-          <Week weekDates={weekDates} events={events} />
+          <Week currentDate={currentDate} weekDates={weekDates} events={events} />
         </div>
       </div>
     </section>
