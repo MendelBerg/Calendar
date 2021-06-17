@@ -8,11 +8,6 @@ const Modal = ({ onCloseModal }) => {
     event.preventDefault();
     const fieldEl = [...document.querySelectorAll('.event-form__field')].map(el => el.value);
 
-    console.log('hahaha');
-    if (fieldEl.includes('')) {
-      return null;
-    }
-
     const [title, date, startTime, endTime, description] = fieldEl;
 
     createEvent({
