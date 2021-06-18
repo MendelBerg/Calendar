@@ -11,12 +11,22 @@
 }
 
 .timeLine {
-  width: 20px;
-  height: 8px;
-  background-color: red;
   position: absolute;
-  // top: 0;
-  left: -10px;
-  border-radius: 5px;
-  opacity: 0.8;
+  left: -3px;
+  display: flex;
+  align-items: center;
+  width: calc(100% + 3px);
+
+  &__circle {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: red;
+  }
+
+  &__line {
+    width: 100%;
+    height: 1px;
+    background-color: red;
+  }
 }

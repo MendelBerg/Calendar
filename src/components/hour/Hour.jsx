@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import TimeLine from './TimeLine.jsx';
 import './hour.scss';
 
 import Event from '../event/Event';
@@ -16,7 +17,7 @@ const Hour = ({ isCurrentHour, dataHour, hourEvents, weekDay }) => {
 
   return (
     <div className="calendar__time-slot" data-time={dataHour + 1}>
-      {!isCurrentHour ? null : <div style={style} className="timeLine"></div>}
+      {!isCurrentHour ? null : <TimeLine style={style} />}
 
       {/* if no events in the current hour nothing will render here */}
       {hourEvents.map(({ id, dateFrom, dateTo, title }) => {
