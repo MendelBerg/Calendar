@@ -5,6 +5,7 @@ import { deleteEvent } from '../../gateway/events.js';
 import './event.scss';
 
 const Event = ({ eventId, height, marginTop, title, time, weekDay }) => {
+  const root = document.querySelector('#root');
   const [isVisible, setIsVisible] = useState(false);
 
   const eventStyle = {
@@ -12,11 +13,6 @@ const Event = ({ eventId, height, marginTop, title, time, weekDay }) => {
     marginTop,
   };
 
-  const btnStyle = {
-    // top: height + marginTop - 30,
-  };
-
-  const root = document.querySelector('#root');
   const showBtnDelete = () => {
     setIsVisible(true);
     root.addEventListener('click', hideBtnDelete);
@@ -34,7 +30,6 @@ const Event = ({ eventId, height, marginTop, title, time, weekDay }) => {
         <div className="event__time">{time}</div>
         <button
           onClick={() => deleteEvent(eventId)}
-          style={btnStyle}
           className={ClassNames('delete-event-btn', {
             'delete-event-btn_left': weekDay === 'Sun',
             hidden: !isVisible,

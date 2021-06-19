@@ -30,18 +30,19 @@
 }
 
 .delete-event-btn {
-  cursor: pointer;
-  border: none;
-  position: absolute;
-  z-index: 2;
-  bottom: -35px;
-  left: 60%;
-
   width: 175px;
   height: 50px;
-  background-color: #fff;
+
+  position: absolute;
+  bottom: -35px;
+  left: 60%;
+  z-index: 2;
+  
   border-radius: 5px;
+  border: none;
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
+  background-color: #fff;
+  cursor: pointer;
 
   &_left {
     left: auto;
