@@ -9,6 +9,8 @@ const Navigation = ({ currentDate, weekDates }) => {
 
   return (
     <header className="calendar__header">
+      <span className="calendar__gmt">GMT+02</span>
+
       {weekDates.map((dayDate, index) => (
         <div
           key={index}
@@ -18,6 +20,7 @@ const Navigation = ({ currentDate, weekDates }) => {
         >
           <span className="day-label__day-name">{days[dayDate.getDay()]}</span>
           <span className="day-label__day-number">{dayDate.getDate()}</span>
+          <div className="day-label__day-gmt"></div>
         </div>
       ))}
     </header>
