@@ -6,7 +6,9 @@ import './modal.scss';
 const Modal = ({ onCloseModal }) => {
   function onCreateEvent(event) {
     event.preventDefault();
+    const fieldEl = [...document.querySelectorAll('.event-form__field')].map(el => el.value);
     const [title, date, startTime, endTime, description] = fieldEl;
+
     createEvent({
       title,
       description,
@@ -18,7 +20,6 @@ const Modal = ({ onCloseModal }) => {
 
   const checkFormValidaion = () => {
     const fieldEl = [...document.querySelectorAll('.event-form__field')].map(el => el.value);
-    console.log('fieldEl', fieldEl);
     if (fieldEl.includes('')) {
       return null;
     }
