@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from './components/header/Header.jsx';
 import Calendar from './components/calendar/Calendar.jsx';
 import Modal from './components/modal/Modal.jsx';
+import { fetchEvents } from './gateway/events.js';
 
 import { getWeekStartDate, generateWeekRange } from '../src/utils/dateUtils.js';
 
@@ -10,6 +11,19 @@ import './common.scss';
 const App = () => {
   const [weekStartDate, setWeekStartDate] = useState(new Date());
   const [isVisibleModal, setIsVisibleModal] = useState(false);
+  const [events, setEvents] = useState([]);
+
+  useEffect(() => {
+    fetchEvents().then(response => {
+      setEvents(
+        response.map(el => ({
+          ...el,
+          dateFrom: new Date(el.dateFrom),
+          dateTo: new Date(el.dateTo),
+        })),
+      );
+    });
+  }, []);
 
   function switchWeek(nextWeek = true) {
     const dateCopy = new Date(weekStartDate);
@@ -40,7 +54,7 @@ const App = () => {
         onReturnToday={returnToday}
         onCreateEvent={showModal}
       />
-      <Calendar weekDates={weekDates} />
+      <Calendar weekDates={weekDates} events={events} />
     </>
   );
 };

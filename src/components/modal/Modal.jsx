@@ -18,17 +18,6 @@ const Modal = ({ onCloseModal }) => {
     onCloseModal();
   }
 
-  const checkFormValidaion = () => {
-    const fieldEl = [...document.querySelectorAll('.event-form__field')].map(el => el.value);
-    if (fieldEl.includes('')) {
-      return null;
-    }
-
-    const submitBtn = document.querySelector('.event-form__submit-btn');
-    submitBtn.removeAttribute('disabled');
-    submitBtn.classList.add('event-form__submit-btn_enabled');
-  };
-
   return (
     <div className="modal overlay">
       <div className="modal__content">
@@ -37,46 +26,19 @@ const Modal = ({ onCloseModal }) => {
             +
           </button>
           <form className="event-form">
-            <input
-              onInput={checkFormValidaion}
-              type="text"
-              name="title"
-              placeholder="Title"
-              className="event-form__field"
-            />
+            <input type="text" name="title" placeholder="Title" className="event-form__field" />
             <div className="event-form__time">
-              <input
-                onInput={checkFormValidaion}
-                type="date"
-                name="date"
-                className="event-form__field"
-              />
-              <input
-                onInput={checkFormValidaion}
-                type="time"
-                name="startTime"
-                className="event-form__field"
-              />
+              <input type="date" name="date" className="event-form__field" />
+              <input type="time" name="startTime" className="event-form__field" />
               <span>-</span>
-              <input
-                onInput={checkFormValidaion}
-                type="time"
-                name="endTime"
-                className="event-form__field"
-              />
+              <input type="time" name="endTime" className="event-form__field" />
             </div>
             <textarea
-              onInput={checkFormValidaion}
               name="description"
               placeholder="Description"
               className="event-form__field"
             ></textarea>
-            <button
-              disabled
-              type="submit"
-              className="event-form__submit-btn"
-              onClick={onCreateEvent}
-            >
+            <button type="submit" className="event-form__submit-btn" onClick={onCreateEvent}>
               Create
             </button>
           </form>
