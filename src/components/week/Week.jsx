@@ -4,7 +4,6 @@ import Day from '../day/Day';
 import { days, isCurrentDay } from '../../utils/dateUtils';
 
 const Week = ({ weekDates, events }) => {
-	console.log('events week', events);
 	return (
 		<div className="calendar__week">
 			{weekDates.map(dayStart => {

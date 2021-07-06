@@ -32,5 +32,14 @@ export const deleteEvent = taskId => {
 	});
 };
 
-export const setArrEvents = async setEvent => setEvent(await fetchEvents());
-
+export const setArrEvents = setEvents => {
+	fetchEvents().then(response => {
+		setEvents(
+			response.map(el => ({
+				...el,
+				dateFrom: new Date(el.dateFrom),
+				dateTo: new Date(el.dateTo),
+			})),
+		);
+	});
+};
