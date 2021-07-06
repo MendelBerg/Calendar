@@ -1,8 +1,6 @@
 import React from 'react';
 import Hour from '../hour/Hour';
 
-import './day.scss';
-
 const Day = ({ isCurrentDay, dataDay, dayEvents, weekDay }) => {
 	const hours = Array(24)
 		.fill()

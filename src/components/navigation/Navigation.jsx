@@ -2,7 +2,6 @@ import React from 'react';
 import СlassNames from 'classnames';
 
 import { days, isCurrentDay } from '../../utils/dateUtils.js';
-import './navigation.scss';
 
 const Navigation = ({ weekDates }) => {
 	return (

@@ -1,7 +1,6 @@
 import React from 'react';
 import Day from '../day/Day';
 
-import './week.scss';
 import { days, isCurrentDay } from '../../utils/dateUtils.js';
 
 const Week = ({ weekDates, events }) => {
