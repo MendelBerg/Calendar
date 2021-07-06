@@ -53,3 +53,14 @@ export const currentDate = moment(new Date()).format('M D Y');
 export const formatDate = date => moment(date).format('M D Y');
 
 export const isCurrentDay = date => currentDate === formatDate(date);
+
+export function switchWeek(startDate, setNewDate, isNext, today = false) {
+	if (today) {
+		setNewDate(new Date());
+		return;
+	}
+
+	const dateCopy = new Date(startDate);
+	dateCopy.setDate(dateCopy.getDate() + (isNext ? 7 : -7));
+	setNewDate(dateCopy);
+}
