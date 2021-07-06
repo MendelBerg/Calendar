@@ -21,6 +21,8 @@ export const generateWeekRange = startDate => {
 	return result;
 };
 
+export const getWeekDates = weekStartDate => generateWeekRange(getWeekStartDate(weekStartDate));
+
 export const getDateTime = (date, time) => {
 	const [hours, minutes] = time.split(':');
 	const withHours = new Date(new Date(date).setHours(Number(hours)));

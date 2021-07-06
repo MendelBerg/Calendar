@@ -1,13 +1,13 @@
 import React from 'react';
 import Day from '../day/Day';
 
-import { days, isCurrentDay } from '../../utils/dateUtils.js';
+import { days, isCurrentDay } from '../../utils/dateUtils';
 
 const Week = ({ weekDates, events }) => {
+	console.log('events week', events);
 	return (
 		<div className="calendar__week">
 			{weekDates.map(dayStart => {
-				// ? as sep func for dayEnd
 				const dayEnd = new Date(dayStart.getTime()).setHours(dayStart.getHours() + 24);
 				const dayEvents = events.filter(
 					event => event.dateFrom > dayStart && event.dateTo < dayEnd,

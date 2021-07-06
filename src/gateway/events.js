@@ -1,6 +1,4 @@
-const baseUrl = 'https://60c763ce06f3160017d29430.mockapi.io/projects/events';
-
-const events = [];
+export const baseUrl = 'https://60e4752d5bcbca001749e9f9.mockapi.io/calendar/events';
 
 export function fetchEvents() {
 	return fetch(baseUrl)
@@ -34,4 +32,5 @@ export const deleteEvent = taskId => {
 	});
 };
 
-export default events;
+export const setArrEvents = async setEvent => setEvent(await fetchEvents());
+

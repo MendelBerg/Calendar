@@ -10,6 +10,7 @@ const Calendar = ({ weekDates, events }) => {
 	return (
 		<section className="calendar">
 			<Navigation weekDates={weekDates} />
+
 			<div className="calendar__body">
 				<div className="calendar__week-container">
 					<Sidebar />

@@ -14,7 +14,6 @@ const Day = ({ isCurrentDay, dataDay, dayEvents, weekDay }) => {
 				return (
 					<Hour
 						key={dataDay + hour}
-						// ? new Date().getHours() in utils as currentHour
 						isCurrentHour={isCurrentDay && hour === new Date().getHours()}
 						weekDay={weekDay}
 						dataHour={hour}
