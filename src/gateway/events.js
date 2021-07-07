@@ -8,7 +8,7 @@ export function fetchEvents() {
 			}
 		})
 		.catch(() => {
-			// alert("Internal Server Error. Can't display events");
+			alert("Internal Server Error. Can't display events");
 		});
 }
 
@@ -20,7 +20,7 @@ export const createEvent = eventData => {
 		},
 		body: JSON.stringify(eventData),
 	}).catch(() => {
-		// alert("Internal Server Error. Can't display events");
+		alert("Internal Server Error. Can't display events");
 	});
 };
 
@@ -28,7 +28,7 @@ export const deleteEvent = taskId => {
 	return fetch(`${baseUrl}/${taskId}`, {
 		method: 'DELETE',
 	}).catch(() => {
-		// alert("Internal Server Error. Can't display events");
+		alert("Internal Server Error. Can't display events");
 	});
 };
 

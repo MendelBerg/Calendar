@@ -10,10 +10,10 @@ import './common.scss';
 
 const App = () => {
 	const [weekStartDate, setWeekStartDate] = useState(new Date());
-	const [events, setEvents] = useState('empty');
+	const [events, setEvents] = useState('');
 	const weekDates = getWeekDates(weekStartDate);
 
-	if (events === 'empty') {
+	if (!events) {
 		setArrEvents(setEvents);
 	}
 
@@ -26,11 +26,7 @@ const App = () => {
 					switchWeek(weekStartDate, setWeekStartDate, isNext, today)
 				}
 			/>
-			<Calendar
-				setEvents={setEvents}
-				events={events !== 'empty' ? events : []}
-				weekDates={weekDates}
-			/>
+			<Calendar setEvents={setEvents} events={events || []} weekDates={weekDates} />
 		</>
 	);
 };
