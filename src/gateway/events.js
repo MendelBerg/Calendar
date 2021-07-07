@@ -43,3 +43,19 @@ export const setArrEvents = setEvents => {
 		);
 	});
 };
+
+export function onCreateEvent(event, onCloseModal, setEvents) {
+	event.preventDefault();
+	const fieldEl = [...document.querySelectorAll('.event-form__field')].map(el => el.value);
+	const [title, date, startTime, endTime, description] = fieldEl;
+
+	createEvent({
+		title,
+		description,
+		dateFrom: new Date(`${date} ${startTime}`),
+		dateTo: new Date(`${date} ${endTime}`),
+	}).then(_ => {
+		onCloseModal();
+		setArrEvents(setEvents);
+	});
+}

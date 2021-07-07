@@ -16,6 +16,7 @@
 	display: flex;
 	align-items: center;
 	width: calc(100% + 3px);
+	z-index: 1;
 
 	&__circle {
 		width: 6px;

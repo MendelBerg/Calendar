@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import ClassNames from 'classnames';
-import { deleteEvent } from '../../gateway/events.js';
+import { deleteEvent, setArrEvents } from '../../gateway/events.js';
 
 import './event.scss';
 
@@ -37,6 +37,7 @@ const Event = ({ eventId, height, marginTop, title, time, weekDay }) => {
 
 			<button
 				onClick={() => deleteEvent(eventId)}
+				// onClick={() => deleteEvent(eventId).then(_ => setArrEvents(setEvents))}
 				style={btnStyle}
 				className={ClassNames('delete-event-btn', {
 					'delete-event-btn_left': weekDay === 'Sun',
