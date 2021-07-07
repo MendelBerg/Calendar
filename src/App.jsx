@@ -26,7 +26,11 @@ const App = () => {
 					switchWeek(weekStartDate, setWeekStartDate, isNext, today)
 				}
 			/>
-			<Calendar events={events !== 'empty' ? events : []} weekDates={weekDates} />
+			<Calendar
+				setEvents={setEvents}
+				events={events !== 'empty' ? events : []}
+				weekDates={weekDates}
+			/>
 		</>
 	);
 };

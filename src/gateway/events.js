@@ -1,4 +1,4 @@
-export const baseUrl = 'https://60e4752d5bcbca001749e9f9.mockapi.io/calendar/events';
+const baseUrl = 'https://60e4752d5bcbca001749e9f9.mockapi.io/calendar/events';
 
 export function fetchEvents() {
 	return fetch(baseUrl)

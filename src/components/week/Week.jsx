@@ -3,7 +3,7 @@ import Day from '../day/Day';
 
 import { days, isCurrentDay } from '../../utils/dateUtils';
 
-const Week = ({ weekDates, events }) => {
+const Week = ({ setEvents, weekDates, events }) => {
 	return (
 		<div className="calendar__week">
 			{weekDates.map(dayStart => {
@@ -14,6 +14,7 @@ const Week = ({ weekDates, events }) => {
 
 				return (
 					<Day
+						setEvents={setEvents}
 						key={dayStart.getDate()}
 						isCurrentDay={isCurrentDay(dayStart)}
 						weekDay={days[dayStart.getDay()]}

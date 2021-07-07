@@ -4,7 +4,7 @@ import { deleteEvent, setArrEvents } from '../../gateway/events.js';
 
 import './event.scss';
 
-const Event = ({ eventId, height, marginTop, title, time, weekDay }) => {
+const Event = ({ setEvents, eventId, height, marginTop, title, time, weekDay }) => {
 	const [isVisible, setIsVisible] = useState(false);
 
 	const eventStyle = {
@@ -36,8 +36,7 @@ const Event = ({ eventId, height, marginTop, title, time, weekDay }) => {
 			</div>
 
 			<button
-				onClick={() => deleteEvent(eventId)}
-				// onClick={() => deleteEvent(eventId).then(_ => setArrEvents(setEvents))}
+				onClick={() => deleteEvent(eventId).then(_ => setArrEvents(setEvents))}
 				style={btnStyle}
 				className={ClassNames('delete-event-btn', {
 					'delete-event-btn_left': weekDay === 'Sun',

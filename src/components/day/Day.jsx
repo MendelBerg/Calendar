@@ -1,7 +1,7 @@
 import React from 'react';
 import Hour from '../hour/Hour';
 
-const Day = ({ isCurrentDay, dataDay, dayEvents, weekDay }) => {
+const Day = ({ setEvents, isCurrentDay, dataDay, dayEvents, weekDay }) => {
 	const hours = Array(24)
 		.fill()
 		.map((val, index) => index);
@@ -13,6 +13,7 @@ const Day = ({ isCurrentDay, dataDay, dayEvents, weekDay }) => {
 
 				return (
 					<Hour
+						setEvents={setEvents}
 						key={dataDay + hour}
 						isCurrentHour={isCurrentDay && hour === new Date().getHours()}
 						weekDay={weekDay}

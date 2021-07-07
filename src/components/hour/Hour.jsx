@@ -5,7 +5,7 @@ import './hour.scss';
 import Event from '../event/Event';
 import { formatMins } from '../../../src/utils/dateUtils.js';
 
-const Hour = ({ isCurrentHour, dataHour, hourEvents, weekDay }) => {
+const Hour = ({ setEvents, isCurrentHour, dataHour, hourEvents, weekDay }) => {
 	const [redLineTop, setRedLineTop] = useState(new Date().getMinutes());
 
 	const style = {
@@ -27,6 +27,7 @@ const Hour = ({ isCurrentHour, dataHour, hourEvents, weekDay }) => {
 
 				return (
 					<Event
+						setEvents={setEvents}
 						key={id}
 						eventId={id}
 						weekDay={weekDay}
