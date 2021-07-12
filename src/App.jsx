@@ -10,8 +10,12 @@ import './common.scss';
 
 const App = () => {
 	const [weekStartDate, setWeekStartDate] = useState(new Date());
-	const [events, setEvents] = useState('');
+	const [events, setStateEvents] = useState('');
 	const weekDates = getWeekDates(weekStartDate);
+
+	const setEvents = events => {
+		setStateEvents(events);
+	};
 
 	if (!events) {
 		setArrEvents(setEvents);
