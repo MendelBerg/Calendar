@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import PropTypes from "prop-types";
 import TimeLine from './TimeLine.jsx';
 import './hour.scss';
 
@@ -40,6 +41,14 @@ const Hour = ({ setEvents, isCurrentHour, dataHour, hourEvents, weekDay }) => {
 			})}
 		</div>
 	);
+};
+
+Hour.propTypes = {
+  setEvents: PropTypes.func.isRequired,
+  isCurrentHour: PropTypes.bool.isRequired,
+  dataHour: PropTypes.number.isRequired,
+  hourEvents: PropTypes.array.isRequired,
+  weekDay: PropTypes.string.isRequired,
 };
 
 export default Hour;

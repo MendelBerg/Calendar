@@ -1,5 +1,6 @@
 import React from 'react';
 import Hour from '../hour/Hour';
+import PropTypes from "prop-types";
 
 const Day = ({ setEvents, isCurrentDay, dataDay, dayEvents, weekDay }) => {
 	const hours = Array(24)
@@ -24,6 +25,14 @@ const Day = ({ setEvents, isCurrentDay, dataDay, dayEvents, weekDay }) => {
 			})}
 		</div>
 	);
+};
+
+Day.propTypes = {
+  setEvents: PropTypes.func.isRequired,
+  dayEvents: PropTypes.array.isRequired,
+  isCurrentDay: PropTypes.bool.isRequired,
+  dataDay: PropTypes.number.isRequired,
+  weekDay: PropTypes.string.isRequired,
 };
 
 export default Day;

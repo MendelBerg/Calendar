@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from "prop-types";
 import ClassNames from 'classnames';
 import { deleteEvent, setArrEvents } from '../../gateway/events.js';
 
@@ -47,6 +48,16 @@ const Event = ({ setEvents, eventId, height, marginTop, title, time, weekDay }) 
 			</button>
 		</>
 	);
+};
+
+Event.propTypes = {
+  setEvents: PropTypes.func.isRequired,
+  eventId: PropTypes.string.isRequired,
+  height: PropTypes.number.isRequired,
+  marginTop: PropTypes.number.isRequired,
+  title: PropTypes.string.isRequired,
+  time: PropTypes.string.isRequired,
+  weekDay: PropTypes.string.isRequired,
 };
 
 export default Event;

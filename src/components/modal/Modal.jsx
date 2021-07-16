@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from "prop-types";
 import { onCreateEvent } from '../../gateway/events';
 
 import './modal.scss';
@@ -36,6 +37,11 @@ const Modal = ({ onCloseModal, setEvents }) => {
 			</div>
 		</div>
 	);
+};
+
+Modal.propTypes = {
+  onCloseModal: PropTypes.func.isRequired,
+  setEvents: PropTypes.func.isRequired,
 };
 
 export default Modal;
