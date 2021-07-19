@@ -50,6 +50,5 @@ export const months = [
   'December',
 ];
 
-export const formatDate = date => moment(date).format('M D Y');
-
-export const isCurrentDay = date => formatDate(new Date()) === formatDate(date);
+export const isCurrentDay = date =>
+  moment(new Date()).format('M D Y') === moment(date).format('M D Y');

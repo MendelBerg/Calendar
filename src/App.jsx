@@ -14,15 +14,11 @@ const App = () => {
   const weekDates = getWeekDates(weekStartDate);
 
   const onNextWeek = () => {
-    const startDateCopy = new Date(weekStartDate);
-    startDateCopy.setDate(startDateCopy.getDate() + 7);
-    setWeekStartDate(startDateCopy);
+    setWeekStartDate(new Date(weekStartDate.setDate(weekStartDate.getDate() + 7)));
   };
 
   const onPrevWeek = () => {
-    const startDateCopy = new Date(weekStartDate);
-    startDateCopy.setDate(startDateCopy.getDate() - 7);
-    setWeekStartDate(startDateCopy);
+    setWeekStartDate(new Date(weekStartDate.setDate(weekStartDate.getDate() - 7)));
   };
 
   const onToday = () => {
