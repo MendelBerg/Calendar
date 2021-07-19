@@ -6,7 +6,7 @@ import Modal from '../modal/Modal.jsx';
 
 import './header.scss';
 
-const Header = ({ weekDates, onSwitchWeek, setEvents }) => {
+const Header = ({ weekDates, setEvents, onNextWeek, onPrevWeek, onToday }) => {
   const [isVisibleModal, setIsVisibleModal] = useState(false);
   const [month, nextMonth] = [...new Set(weekDates.map(day => day.getMonth()))];
 
@@ -22,15 +22,15 @@ const Header = ({ weekDates, onSwitchWeek, setEvents }) => {
         </button>
 
         <div className="navigation">
-          <button className="navigation__today-btn button" onClick={() => onSwitchWeek(null, true)}>
+          <button className="navigation__today-btn button" onClick={onToday}>
             Today
           </button>
 
-          <button className="icon-button navigation__nav-icon" onClick={() => onSwitchWeek(false)}>
+          <button className="icon-button navigation__nav-icon" onClick={onPrevWeek}>
             <i className="fas fa-chevron-left"></i>
           </button>
 
-          <button className="icon-button navigation__nav-icon" onClick={() => onSwitchWeek(true)}>
+          <button className="icon-button navigation__nav-icon" onClick={onNextWeek}>
             <i className="fas fa-chevron-right"></i>
           </button>
 
@@ -46,7 +46,9 @@ const Header = ({ weekDates, onSwitchWeek, setEvents }) => {
 Header.propTypes = {
   setEvents: PropTypes.func.isRequired,
   weekDates: PropTypes.array.isRequired,
-  onSwitchWeek: PropTypes.func.isRequired,
+  onNextWeek: PropTypes.func.isRequired,
+  onPrevWeek: PropTypes.func.isRequired,
+  onToday: PropTypes.func.isRequired,
 };
 
 export default Header;

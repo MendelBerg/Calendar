@@ -1,13 +1,13 @@
 import React from 'react';
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 
 const TimeLine = ({ style }) => {
-	return (
-		<div style={style} className="time-line">
-			<div className="time-line__circle"></div>
-			<div className="time-line__line"></div>
-		</div>
-	);
+  return (
+    <div style={style} className="time-line">
+      <div className="time-line__circle"></div>
+      <div className="time-line__line"></div>
+    </div>
+  );
 };
 
 TimeLine.propTypes = {

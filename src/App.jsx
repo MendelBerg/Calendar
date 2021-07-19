@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import Header from './components/header/Header.jsx';
 import Calendar from './components/calendar/Calendar.jsx';
@@ -9,30 +9,46 @@ import { getWeekDates, switchWeek } from '../src/utils/dateUtils.js';
 import './common.scss';
 
 const App = () => {
-	const [weekStartDate, setWeekStartDate] = useState(new Date());
-	const [events, setStateEvents] = useState('');
-	const weekDates = getWeekDates(weekStartDate);
+  const [weekStartDate, setWeekStartDate] = useState(new Date());
+  const [events, setStateEvents] = useState([]);
+  const weekDates = getWeekDates(weekStartDate);
 
-	const setEvents = events => {
-		setStateEvents(events);
-	};
+  const onNextWeek = () => {
+    const startDateCopy = new Date(weekStartDate);
+    startDateCopy.setDate(startDateCopy.getDate() + 7);
+    setWeekStartDate(startDateCopy);
+  };
 
-	if (!events) {
-		setArrEvents(setEvents);
-	}
+  const onPrevWeek = () => {
+    const startDateCopy = new Date(weekStartDate);
+    startDateCopy.setDate(startDateCopy.getDate() - 7);
+    setWeekStartDate(startDateCopy);
+  };
 
-	return (
-		<>
-			<Header
-				setEvents={setEvents}
-				weekDates={weekDates}
-				onSwitchWeek={(isNext, today = false) =>
-					switchWeek(weekStartDate, setWeekStartDate, isNext, today)
-				}
-			/>
-			<Calendar setEvents={setEvents} events={events || []} weekDates={weekDates} />
-		</>
-	);
+  const onToday = () => {
+    setWeekStartDate(new Date());
+  };
+
+  const setEvents = events => {
+    setStateEvents(events);
+  };
+
+  useEffect(() => {
+    setArrEvents(setEvents);
+  }, []);
+
+  return (
+    <>
+      <Header
+        setEvents={setEvents}
+        weekDates={weekDates}
+        onNextWeek={onNextWeek}
+        onPrevWeek={onPrevWeek}
+        onToday={onToday}
+      />
+      <Calendar setEvents={setEvents} events={events} weekDates={weekDates} />
+    </>
+  );
 };
 
 export default App;
