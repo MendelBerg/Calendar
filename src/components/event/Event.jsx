@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import ClassNames from 'classnames';
-import { deleteEvent, setArrEvents } from '../../gateway/events.js';
 
 import './event.scss';
 
-const Event = ({ setEvents, eventId, height, marginTop, title, time, weekDay }) => {
+const Event = ({ onDeleteEvent, eventId, height, marginTop, title, time, weekDay }) => {
   const [isVisible, setIsVisible] = useState(false);
 
   const eventStyle = {
@@ -37,7 +36,7 @@ const Event = ({ setEvents, eventId, height, marginTop, title, time, weekDay }) 
       </div>
 
       <button
-        onClick={() => deleteEvent(eventId).then(_ => setArrEvents(setEvents))}
+        onClick={() => onDeleteEvent(eventId)}
         style={btnStyle}
         className={ClassNames('delete-event-btn', {
           'delete-event-btn_left': weekDay === 'Sun',
@@ -51,7 +50,7 @@ const Event = ({ setEvents, eventId, height, marginTop, title, time, weekDay }) 
 };
 
 Event.propTypes = {
-  setEvents: PropTypes.func.isRequired,
+  onDeleteEvent: PropTypes.func.isRequired,
   eventId: PropTypes.string.isRequired,
   height: PropTypes.number.isRequired,
   marginTop: PropTypes.number.isRequired,

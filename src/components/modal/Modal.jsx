@@ -1,10 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { onCreateEvent } from '../../gateway/events';
 
 import './modal.scss';
 
-const Modal = ({ onCloseModal, setEvents }) => {
+const Modal = ({ onCloseModal, onCreateEvent }) => {
   return (
     <div className="modal overlay">
       <div className="modal__content">
@@ -28,7 +27,11 @@ const Modal = ({ onCloseModal, setEvents }) => {
             <button
               type="submit"
               className="event-form__submit-btn"
-              onClick={event => onCreateEvent(event, onCloseModal, setEvents)}
+              onClick={event => {
+                onCreateEvent(event).then(_ => {
+                  onCloseModal();
+                });
+              }}
             >
               Create
             </button>
@@ -41,7 +44,7 @@ const Modal = ({ onCloseModal, setEvents }) => {
 
 Modal.propTypes = {
   onCloseModal: PropTypes.func.isRequired,
-  setEvents: PropTypes.func.isRequired,
+  onCreateEvent: PropTypes.func.isRequired,
 };
 
 export default Modal;

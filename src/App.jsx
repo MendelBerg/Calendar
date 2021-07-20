@@ -3,14 +3,14 @@ import React, { useState, useEffect } from 'react';
 import Header from './components/header/Header.jsx';
 import Calendar from './components/calendar/Calendar.jsx';
 
-import { setArrEvents } from './gateway/events';
-import { getWeekDates, switchWeek } from '../src/utils/dateUtils.js';
+import { deleteEvent, createEvent, fetchEvents } from './gateway/events';
+import { getWeekDates } from '../src/utils/dateUtils.js';
 
 import './common.scss';
 
 const App = () => {
   const [weekStartDate, setWeekStartDate] = useState(new Date());
-  const [events, setStateEvents] = useState([]);
+  const [events, setEvents] = useState([]);
   const weekDates = getWeekDates(weekStartDate);
 
   const onNextWeek = () => {
@@ -25,24 +25,42 @@ const App = () => {
     setWeekStartDate(new Date());
   };
 
-  const setEvents = events => {
-    setStateEvents(events);
+  const refreashEvents = () => {
+    fetchEvents().then(response => {
+      setEvents(
+        response.map(el => ({
+          ...el,
+          dateFrom: new Date(el.dateFrom),
+          dateTo: new Date(el.dateTo),
+        })),
+      );
+    });
   };
 
+  const onCreateEvent = event =>
+    createEvent(event).then(_ => {
+      refreashEvents();
+    });
+
+  const onDeleteEvent = eventId =>
+    deleteEvent(eventId).then(_ => {
+      refreashEvents();
+    });
+
   useEffect(() => {
-    setArrEvents(setEvents);
+    refreashEvents();
   }, []);
 
   return (
     <>
       <Header
-        setEvents={setEvents}
+        onCreateEvent={onCreateEvent}
         weekDates={weekDates}
         onNextWeek={onNextWeek}
         onPrevWeek={onPrevWeek}
         onToday={onToday}
       />
-      <Calendar setEvents={setEvents} events={events} weekDates={weekDates} />
+      <Calendar onDeleteEvent={onDeleteEvent} events={events} weekDates={weekDates} />
     </>
   );
 };

@@ -4,7 +4,7 @@ import Day from '../day/Day';
 
 import { days } from '../../utils/dateUtils';
 
-const Week = ({ setEvents, weekDates, events }) => {
+const Week = ({ onDeleteEvent, weekDates, events }) => {
   return (
     <div className="calendar__week">
       {weekDates.map(dayStart => {
@@ -15,7 +15,7 @@ const Week = ({ setEvents, weekDates, events }) => {
 
         return (
           <Day
-            setEvents={setEvents}
+            onDeleteEvent={onDeleteEvent}
             key={dayStart.getDate()}
             dayStart={dayStart}
             weekDay={days[dayStart.getDay()]}
@@ -29,7 +29,7 @@ const Week = ({ setEvents, weekDates, events }) => {
 };
 
 Week.propTypes = {
-  setEvents: PropTypes.func.isRequired,
+  onDeleteEvent: PropTypes.func.isRequired,
   weekDates: PropTypes.array.isRequired,
   events: PropTypes.array.isRequired,
 };

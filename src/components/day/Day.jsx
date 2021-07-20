@@ -3,7 +3,7 @@ import Hour from '../hour/Hour';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 
-const Day = ({ setEvents, dayStart, dataDay, dayEvents, weekDay }) => {
+const Day = ({ onDeleteEvent, dayStart, dataDay, dayEvents, weekDay }) => {
   const hours = Array(24)
     .fill()
     .map((val, index) => index);
@@ -15,7 +15,7 @@ const Day = ({ setEvents, dayStart, dataDay, dayEvents, weekDay }) => {
 
         return (
           <Hour
-            setEvents={setEvents}
+            onDeleteEvent={onDeleteEvent}
             key={dataDay + hour}
             isCurrentHour={
               moment(dayStart).format('M D Y') === moment(new Date()).format('M D Y') &&
@@ -32,7 +32,7 @@ const Day = ({ setEvents, dayStart, dataDay, dayEvents, weekDay }) => {
 };
 
 Day.propTypes = {
-  setEvents: PropTypes.func.isRequired,
+  onDeleteEvent: PropTypes.func.isRequired,
   dayEvents: PropTypes.array.isRequired,
   dayStart: PropTypes.object.isRequired,
   dataDay: PropTypes.number.isRequired,

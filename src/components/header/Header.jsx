@@ -6,14 +6,14 @@ import Modal from '../modal/Modal.jsx';
 
 import './header.scss';
 
-const Header = ({ weekDates, setEvents, onNextWeek, onPrevWeek, onToday }) => {
+const Header = ({ weekDates, onCreateEvent, onNextWeek, onPrevWeek, onToday }) => {
   const [isVisibleModal, setIsVisibleModal] = useState(false);
   const [month, nextMonth] = [...new Set(weekDates.map(day => day.getMonth()))];
 
   return (
     <>
       {!isVisibleModal ? null : (
-        <Modal setEvents={setEvents} onCloseModal={() => setIsVisibleModal(false)} />
+        <Modal onCreateEvent={onCreateEvent} onCloseModal={() => setIsVisibleModal(false)} />
       )}
 
       <header className="header">
@@ -44,7 +44,7 @@ const Header = ({ weekDates, setEvents, onNextWeek, onPrevWeek, onToday }) => {
 };
 
 Header.propTypes = {
-  setEvents: PropTypes.func.isRequired,
+  onCreateEvent: PropTypes.func.isRequired,
   weekDates: PropTypes.array.isRequired,
   onNextWeek: PropTypes.func.isRequired,
   onPrevWeek: PropTypes.func.isRequired,

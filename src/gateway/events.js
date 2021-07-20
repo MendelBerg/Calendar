@@ -12,7 +12,7 @@ export function fetchEvents() {
     });
 }
 
-export const createEvent = eventData => {
+export const postEvent = eventData => {
   return fetch(baseUrl, {
     method: 'POST',
     headers: {
@@ -32,30 +32,15 @@ export const deleteEvent = taskId => {
   });
 };
 
-export const setArrEvents = setEvents => {
-  fetchEvents().then(response => {
-    setEvents(
-      response.map(el => ({
-        ...el,
-        dateFrom: new Date(el.dateFrom),
-        dateTo: new Date(el.dateTo),
-      })),
-    );
-  });
-};
-
-export function onCreateEvent(event, onCloseModal, setEvents) {
+export function createEvent(event) {
   event.preventDefault();
   const fieldEl = [...document.querySelectorAll('.event-form__field')].map(el => el.value);
   const [title, date, startTime, endTime, description] = fieldEl;
 
-  createEvent({
+  return postEvent({
     title,
     description,
     dateFrom: new Date(`${date} ${startTime}`),
     dateTo: new Date(`${date} ${endTime}`),
-  }).then(_ => {
-    onCloseModal();
-    setArrEvents(setEvents);
   });
 }
