@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Day from '../day/Day';
 
-import { days, isCurrentDay } from '../../utils/dateUtils';
+import { days } from '../../utils/dateUtils';
 
 const Week = ({ setEvents, weekDates, events }) => {
   return (
@@ -17,7 +17,7 @@ const Week = ({ setEvents, weekDates, events }) => {
           <Day
             setEvents={setEvents}
             key={dayStart.getDate()}
-            isCurrentDay={isCurrentDay(dayStart)}
+            dayStart={dayStart}
             weekDay={days[dayStart.getDay()]}
             dataDay={dayStart.getDate()}
             dayEvents={dayEvents}

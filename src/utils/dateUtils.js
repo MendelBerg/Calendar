@@ -1,5 +1,3 @@
-import moment from 'moment';
-
 export const getWeekStartDate = date => {
   const dateCopy = new Date(date);
   const dayOfWeek = dateCopy.getDay();
@@ -49,6 +47,3 @@ export const months = [
   'November',
   'December',
 ];
-
-export const isCurrentDay = date =>
-  moment(new Date()).format('M D Y') === moment(date).format('M D Y');

@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import СlassNames from 'classnames';
+import moment from 'moment';
 
-import { days, isCurrentDay } from '../../utils/dateUtils.js';
+import { days } from '../../utils/dateUtils.js';
 
 const Navigation = ({ weekDates }) => {
   return (
@@ -12,7 +13,8 @@ const Navigation = ({ weekDates }) => {
         <div
           key={index}
           className={СlassNames('calendar__day-label day-label', {
-            'day-label_current': isCurrentDay(dayDate),
+            'day-label_current':
+              moment(dayDate).format('M D Y') === moment(new Date()).format('M D Y'),
           })}
         >
           <span className="day-label__day-name">{days[dayDate.getDay()]}</span>
